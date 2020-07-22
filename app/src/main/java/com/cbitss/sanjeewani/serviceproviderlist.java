@@ -42,6 +42,9 @@ class serviceproviderlist extends BaseAdapter {
         title = convertView.findViewById(R.id.Name_service);
         description = convertView.findViewById(R.id.description);
 
+        im.setImageResource(R.mipmap.ic_launcher);
+        title.setText("Title of service");
+
         return convertView;
     }
 }
