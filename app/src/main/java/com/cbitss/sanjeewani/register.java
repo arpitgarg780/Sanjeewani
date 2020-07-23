@@ -14,6 +14,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.cbitss.sanjeewani.register_serviceprovider.register_serviceprovider;
 import com.cbitss.sanjeewani.ui.login.LoginActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -137,7 +138,7 @@ public class register extends AppCompatActivity {
         register_s.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(register.this,register_serviceprovider.class));
+                startActivity(new Intent(register.this, register_serviceprovider.class));
                 finish();
             }
         });

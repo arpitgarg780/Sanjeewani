@@ -1,4 +1,4 @@
-package com.cbitss.sanjeewani;
+package com.cbitss.sanjeewani.register_serviceprovider;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.cbitss.sanjeewani.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -24,7 +25,7 @@ public class register_serviceprovider extends AppCompatActivity {
         phone = findViewById(R.id.phone);
         dob = findViewById(R.id.dob);
         password = findViewById(R.id.password);
-        register = findViewById(R.id.register);
+        register = findViewById(R.id.register_s);
 
         fauth = FirebaseAuth.getInstance();
         fstore = FirebaseFirestore.getInstance();
@@ -36,5 +37,7 @@ public class register_serviceprovider extends AppCompatActivity {
                 String Phone = phone.getText().toString().trim();
             }
         });
+
+
     }
 }

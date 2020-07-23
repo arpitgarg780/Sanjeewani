@@ -1,8 +1,10 @@
-package com.cbitss.sanjeewani;
+package com.cbitss.sanjeewani.register_serviceprovider;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.cbitss.sanjeewani.R;
 
 public class register_serviceprovider_3 extends AppCompatActivity {
 
