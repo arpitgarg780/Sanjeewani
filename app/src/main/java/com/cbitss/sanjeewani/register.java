@@ -125,5 +125,12 @@ public class register extends AppCompatActivity {
                 });}
             }
         });
+        login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(register.this,login.class));
+                finish(); 
+            }
+        });
     }
 }
