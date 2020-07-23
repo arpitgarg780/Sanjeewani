@@ -1,5 +1,6 @@
 package com.cbitss.sanjeewani;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.text.Layout;
 import android.view.LayoutInflater;
@@ -11,13 +12,23 @@ import android.widget.TextView;
 
 class serviceproviderlist extends BaseAdapter {
     Context c;
+    String Title[] = {
+            "Cleaning",
+            "Printer Repair",
+            "Automobile repair"
+    };
+    String Description[]={
+            "I will clean Air Conditioners and cars",
+            "I refill and epair aur printer at your home",
+            "Get your automobiles repaired very quick and cheap"
+    };
     serviceproviderlist(Context c)
     {
         this.c=c;
     }
     @Override
     public int getCount() {
-        return 0;
+        return Title.length;
     }
 
     @Override
@@ -27,7 +38,7 @@ class serviceproviderlist extends BaseAdapter {
 
     @Override
     public long getItemId(int position) {
-        return 0;
+        return position;
     }
 
     @Override
@@ -38,12 +49,15 @@ class serviceproviderlist extends BaseAdapter {
         ImageView im;
         TextView title,description;
 
+
+
         im = convertView.findViewById(R.id.image);
         title = convertView.findViewById(R.id.Name_service);
         description = convertView.findViewById(R.id.description);
 
         im.setImageResource(R.mipmap.ic_launcher);
-        title.setText("Title of service");
+        title.setText(Title[position]);
+        description.setText(Description[position]);
 
         return convertView;
     }

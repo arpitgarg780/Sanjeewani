@@ -2,6 +2,7 @@ package com.cbitss.sanjeewani;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -10,6 +11,7 @@ import android.widget.Toast;
 
 public class serviceProviders extends AppCompatActivity {
     ListView list;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,5 +27,8 @@ public class serviceProviders extends AppCompatActivity {
                 Toast.makeText(serviceProviders.this, "Pending work", Toast.LENGTH_SHORT).show();
             }
         });
+        ProgressDialog progress = new ProgressDialog(this);
+        progress.setMessage("Wait!! We are fetching best results for you.");
+        progress.show();
     }
 }
