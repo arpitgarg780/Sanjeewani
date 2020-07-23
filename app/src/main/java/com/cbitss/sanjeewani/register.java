@@ -37,6 +37,7 @@ public class register extends AppCompatActivity {
     ProgressBar progress;
     String userID;
     FirebaseFirestore fStore;
+    TextView register_s;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +50,7 @@ public class register extends AppCompatActivity {
         register = findViewById(R.id.register);
         login = findViewById(R.id.login);
         fStore = FirebaseFirestore.getInstance();
+        register_s = findViewById(R.id.register_service);
 
         fauth = FirebaseAuth.getInstance();
         progress = findViewById(R.id.progressBar);
@@ -129,7 +131,14 @@ public class register extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(register.this,login.class));
-                finish(); 
+                finish();
+            }
+        });
+        register_s.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(register.this,register_serviceprovider.class));
+                finish();
             }
         });
     }
