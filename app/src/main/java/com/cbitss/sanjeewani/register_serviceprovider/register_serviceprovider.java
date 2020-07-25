@@ -124,6 +124,10 @@ public class register_serviceprovider extends AppCompatActivity {//implements Da
                                 user.put("email",Email);
                                 user.put("phone",Phone);
                                 user.put("dob",Dob);
+                                user.put("subscription","free");
+                                user.put("type","service_provider");
+                                user.put("registered","false");
+                                user.put("verified","false");
                                 documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
                                     @Override
                                     public void onSuccess(Void aVoid) {
