@@ -3,6 +3,7 @@ package com.cbitss.sanjeewani.register_serviceprovider;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -19,7 +20,7 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class not_verified extends AppCompatActivity {
     TextView email,pending;
-    Button resend;
+    Button resend,next;
     FirebaseAuth fauth;
 
     @Override
@@ -29,11 +30,12 @@ public class not_verified extends AppCompatActivity {
         email = findViewById(R.id.email);
         pending = findViewById(R.id.pending);
         resend = findViewById(R.id.resend);
+        next = findViewById(R.id.next);
 
         fauth = FirebaseAuth.getInstance();
         final String TAG = "TAG";
 
-        if(fauth.getCurrentUser().isEmailVerified()){
+        if(!fauth.getCurrentUser().isEmailVerified()){
             email.setText("Email Id verified");
             resend.setVisibility(View.GONE);
         }
@@ -54,6 +56,13 @@ public class not_verified extends AppCompatActivity {
                         Log.d(TAG, "onFailure: Email not sent " + e.getMessage());
                     }
                 });
+            }
+        });
+
+        next.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(not_verified.this,subscription_serviceprovider.class));
             }
         });
 

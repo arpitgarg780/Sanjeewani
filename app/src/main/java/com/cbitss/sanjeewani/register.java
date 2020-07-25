@@ -65,6 +65,7 @@ public class register extends AppCompatActivity {
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                int flag=0;
                 final String e_email = email.getText().toString().trim();
                 String e_password = password.getText().toString().trim();
                 final String e_name = name.getText().toString();
@@ -72,14 +73,25 @@ public class register extends AppCompatActivity {
 
                 if (TextUtils.isEmpty(e_email)) {
                     email.setError("Email is required");
+                    flag = 1;
                 }
                 if (TextUtils.isEmpty(e_password)) {
                     password.setError("Password is required");
+                    flag = 1;
                 }
                 if (password.length() < 6) {
                     password.setError("Password should be atleast 6 characters");
+                    flag =1;
                 }
-                else{
+                if(TextUtils.isEmpty(e_name)){
+                    email.setError("Email is required");
+                    flag = 1;
+                }
+                if(TextUtils.isEmpty(e_phone)){
+                    phone.setError("Phone Number is required");
+                    flag = 1;
+                }
+                else if(flag==0){
                 progress.setVisibility(View.VISIBLE);
                 //register the user
 

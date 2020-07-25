@@ -12,7 +12,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".register_serviceprovider.not_verified"></activity>
+        <activity android:name=".chat_serviceprovider"></activity>
+        <activity android:name=".register_serviceprovider.subscription_serviceprovider" />
+        <activity android:name=".register_serviceprovider.register_serviceprovider_4" />
+        <activity android:name=".register_serviceprovider.not_verified" />
         <activity android:name=".register_serviceprovider.register_serviceprovider_3" />
         <activity android:name=".register_serviceprovider.register_serviceprovider_2" />
         <activity android:name=".register_serviceprovider.register_serviceprovider" />

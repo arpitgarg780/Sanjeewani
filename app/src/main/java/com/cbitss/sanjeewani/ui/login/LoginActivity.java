@@ -30,6 +30,7 @@ import com.cbitss.sanjeewani.login;
 import com.cbitss.sanjeewani.register;
 import com.cbitss.sanjeewani.register_serviceprovider.not_verified;
 import com.cbitss.sanjeewani.register_serviceprovider.register_serviceprovider_2;
+import com.cbitss.sanjeewani.register_serviceprovider.register_serviceprovider_3;
 import com.cbitss.sanjeewani.subscription;
 import com.cbitss.sanjeewani.ui.login.LoginViewModel;
 import com.cbitss.sanjeewani.ui.login.LoginViewModelFactory;
@@ -201,10 +202,10 @@ public class LoginActivity extends AppCompatActivity {
                                 Toast.makeText(LoginActivity.this, type, Toast.LENGTH_SHORT).show();
                                 if(type.equals("service_provider")) {
                                     if (registered.equals("false")){
-                                        startActivity(new Intent(LoginActivity.this, register_serviceprovider_2.class));
+                                        startActivity(new Intent(LoginActivity.this, register_serviceprovider_3.class));
                                         finish();
                                     }
-                                    else if((registered.equals("true")&&verified.equals("flase")||!fauth.getCurrentUser().isEmailVerified())){
+                                    else if((registered.equals("true")&&verified.equals("false")||!fauth.getCurrentUser().isEmailVerified())){
                                         startActivity(new Intent(LoginActivity.this, not_verified.class));
                                         finish();
                                     }

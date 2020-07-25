@@ -47,17 +47,19 @@ class serviceproviderlist extends BaseAdapter {
         convertView = li.inflate(R.layout.adapter_serviceprovider,null);
 
         ImageView im;
-        TextView title,description;
+        TextView title,description,address;
 
 
 
         im = convertView.findViewById(R.id.image);
         title = convertView.findViewById(R.id.Name_service);
         description = convertView.findViewById(R.id.description);
+        address = convertView.findViewById(R.id.address);
 
         im.setImageResource(R.mipmap.ic_launcher);
         title.setText(Title[position]);
         description.setText(Description[position]);
+        address.setText("Address");
 
         return convertView;
     }
