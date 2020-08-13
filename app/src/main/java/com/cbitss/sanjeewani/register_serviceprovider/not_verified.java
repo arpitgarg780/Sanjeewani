@@ -24,6 +24,16 @@ public class not_verified extends AppCompatActivity {
     FirebaseAuth fauth;
 
     @Override
+    protected void onStart() {
+        super.onStart();
+        if(fauth.getCurrentUser().isEmailVerified()){
+            email.setText("Email Id verified");
+            resend.setVisibility(View.GONE);
+        }
+
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_not_verified);
@@ -35,7 +45,8 @@ public class not_verified extends AppCompatActivity {
         fauth = FirebaseAuth.getInstance();
         final String TAG = "TAG";
 
-        if(!fauth.getCurrentUser().isEmailVerified()){
+
+        if(fauth.getCurrentUser().isEmailVerified()){
             email.setText("Email Id verified");
             resend.setVisibility(View.GONE);
         }

@@ -84,7 +84,7 @@ public class register extends AppCompatActivity {
                     flag =1;
                 }
                 if(TextUtils.isEmpty(e_name)){
-                    email.setError("Email is required");
+                    name.setError("Email is required");
                     flag = 1;
                 }
                 if(TextUtils.isEmpty(e_phone)){
@@ -121,6 +121,7 @@ public class register extends AppCompatActivity {
                             user.put("phone",e_phone);
                             user.put("subscription","free");
                             user.put("type","customer");
+                            user.put("address","false");
                             documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
                                 public void onSuccess(Void aVoid) {

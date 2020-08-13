@@ -19,6 +19,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.SetOptions;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -72,7 +73,7 @@ public class register_serviceprovider_2 extends AppCompatActivity {
                     Map<String,Object> user = new HashMap<>();
                     user.put("type",Type);
                     user.put("description",Description);
-                    documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
+                    documentReference.set(user,SetOptions.merge()).addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
                         public void onSuccess(Void aVoid) {
                             startActivity(new Intent(register_serviceprovider_2.this, register_serviceprovider_4.class));

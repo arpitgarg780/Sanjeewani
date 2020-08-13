@@ -34,6 +34,7 @@ import com.cbitss.sanjeewani.register_serviceprovider.register_serviceprovider_3
 import com.cbitss.sanjeewani.subscription;
 import com.cbitss.sanjeewani.ui.login.LoginViewModel;
 import com.cbitss.sanjeewani.ui.login.LoginViewModelFactory;
+import com.cbitss.sanjeewani.user_address;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -48,7 +49,7 @@ public class LoginActivity extends AppCompatActivity {
     private LoginViewModel loginViewModel;
     FirebaseAuth fauth = FirebaseAuth.getInstance();
     FirebaseFirestore db = FirebaseFirestore.getInstance();
-    String type,verified,registered;
+    String type,verified,registered,address;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -199,6 +200,8 @@ public class LoginActivity extends AppCompatActivity {
                                 type = task.getResult().getString("type");
                                 registered = task.getResult().getString("registered");
                                 verified = task.getResult().getString("verified");
+                                if(type.equals("customer"))
+                                address = task.getResult().getString("address");
                                 Toast.makeText(LoginActivity.this, type, Toast.LENGTH_SHORT).show();
                                 if(type.equals("service_provider")) {
                                     if (registered.equals("false")){
@@ -214,8 +217,14 @@ public class LoginActivity extends AppCompatActivity {
                                     }
                                 }
                                 else {
-                                    startActivity(new Intent(LoginActivity.this, subscription.class));
-                                    finish();
+                                    if(address.equals("false")) {
+                                        startActivity(new Intent(LoginActivity.this, user_address.class));
+                                        finish();
+                                    }
+                                    else {
+                                        startActivity(new Intent(LoginActivity.this, subscription.class));
+                                        finish();
+                                    }
                                 }
 
                             }

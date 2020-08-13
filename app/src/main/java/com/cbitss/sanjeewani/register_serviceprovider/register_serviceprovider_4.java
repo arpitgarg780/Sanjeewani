@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.cbitss.sanjeewani.R;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -36,7 +37,12 @@ public class register_serviceprovider_4 extends AppCompatActivity {
 
                 String uid = fath.getCurrentUser().getUid();
                 DocumentReference ref = db.collection("users").document(uid);
-                ref.update("registered", "true");
+                ref.update("registered", "true").addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Toast.makeText(register_serviceprovider_4.this, "Temporary toast to check update", Toast.LENGTH_SHORT).show();
+                    }
+                });
 
             }
         });

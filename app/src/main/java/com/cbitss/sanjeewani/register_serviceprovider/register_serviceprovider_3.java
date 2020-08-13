@@ -17,6 +17,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.SetOptions;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -77,7 +78,6 @@ public class register_serviceprovider_3 extends AppCompatActivity {
                     flag = 1;
                 }
                 else if(flag == 0){
-                    //TODO: upload data to database
                     final String userID = fauth.getCurrentUser().getUid();
                     DocumentReference documentReference = fStore.collection("users_s").document(userID);
                     Map<String,Object> user = new HashMap<>();
@@ -89,7 +89,7 @@ public class register_serviceprovider_3 extends AppCompatActivity {
                     user.put("state",State);
                     user.put("country",Country);
                     //TODO: add step recorder to start where left off
-                    documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
+                    documentReference.set(user, SetOptions.merge()).addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
                         public void onSuccess(Void aVoid) {
                             Log.d(TAG, "onSuccess: service provider address is created for "+ userID);

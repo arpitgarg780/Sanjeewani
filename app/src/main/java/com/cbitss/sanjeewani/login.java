@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -45,24 +46,39 @@ public class login extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                int flag = 0;
                 String Email = email.getText().toString().trim();
                 String Password = password.getText().toString().trim();
-                fauth.signInWithEmailAndPassword(Email,Password)
-                        .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                            @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
-                                if(task.isSuccessful()){
-                                    Toast.makeText(login.this, "Login Success", Toast.LENGTH_SHORT).show();
-                                    startActivity(new Intent(login.this, LoginActivity.class));
-                                    finish();
+
+                if(TextUtils.isEmpty(Email)){
+                    email.setError("Email ID is required");
+                    flag = 1;
+                }
+                if(TextUtils.isEmpty(Password)){
+                    password.setError("Password is required");
+                    flag =1;
+                }
+                if (Password.length()<6){
+                    password.setError("Password should have atleast 6 characters");
+                    flag = 1;
+                }
+                else if(flag == 0) {
+                    fauth.signInWithEmailAndPassword(Email, Password)
+                            .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                                @Override
+                                public void onComplete(@NonNull Task<AuthResult> task) {
+                                    if (task.isSuccessful()) {
+                                        Toast.makeText(login.this, "Login Success", Toast.LENGTH_SHORT).show();
+                                        startActivity(new Intent(login.this, LoginActivity.class));
+                                        finish();
+                                    } else {
+                                        Log.w(TAG, "signInWithEmail:failure", task.getException());
+                                        Toast.makeText(login.this, "Authentication failed.",
+                                                Toast.LENGTH_SHORT).show();
+                                    }
                                 }
-                                else{
-                                    Log.w(TAG, "signInWithEmail:failure", task.getException());
-                                    Toast.makeText(login.this, "Authentication failed.",
-                                            Toast.LENGTH_SHORT).show();
-                                }
-                            }
-                        });
+                            });
+                }
             }
         });
     }
